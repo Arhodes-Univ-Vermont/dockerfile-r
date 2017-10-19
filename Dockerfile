@@ -1,5 +1,9 @@
 FROM rocker/tidyverse:3.4.2
 
+mkdir ~/docker
+mkdir ~/docker/Metagenomics
+sudo docker run -d -p 8787:8787 -v $HOME/docker/Metagenomics:/home/rstudio/ -e ROOT=TRUE rocker/rstudio
+
 RUN apt-get update && \
     apt-get -y install python3-pip && \
     pip3 install --no-cache-dir notebook==5.2 && \
@@ -9,7 +13,7 @@ RUN apt-get update && \
 
 ENV NB_USER rstudio
 ENV NB_UID 1000
-ENV HOME /home/rstudio
+ENV HOME /rocker/rstudio
 WORKDIR ${HOME}
 
 USER ${NB_USER}
