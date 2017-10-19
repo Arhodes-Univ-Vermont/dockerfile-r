@@ -1,2 +1,4 @@
 require(knitr)
-require(DESeq2)
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2", dependencies=TRUE)
+biocLite("BiocParallel", dependencies=TRUE)
